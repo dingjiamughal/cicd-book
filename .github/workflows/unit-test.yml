@@ -15,10 +15,26 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: lint and test
+
+      - name: Lint and test
         run: |
           npm i
           npm run test
+
+      - name: Generate a.txt
+        run: |
+          touch a.txt
+          echo 100 > a.txt
+          cat a.txt
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "465560882@qq.com"
+          git config --local user.name "dingjaimughal"
+          git diff
+          git add .
+          git commit -m "GitHub Action Schedule Job" || exit 0
+          git push
