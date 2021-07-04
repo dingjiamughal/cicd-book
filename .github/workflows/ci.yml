@@ -22,16 +22,19 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             # 设置 sshkey
-            - name: set ssh key
+            - name: Set ssh key
               run: |
                   mkdir -p ~/.ssh/
                   echo "${{secrets.DJ_ID_RSA}}" > ~/.ssh/id_rsa
                   cat ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
-                  ssh-keyscan github.com >> ~/.ssh/known_hosts
-            - name: start deploy
+            # known_hosts
+            - name: Setup knownhosts
+              run: ssh-keyscan 47.100.201.31 >> ~/.ssh/known_hosts
+
+            - name: Start deploy
               run: |
-                  ssh root@47.100.201.31 "echo connect success!~~"
+                  ssh root@47.100.201.31 "ls /home/work"
 
             # - name: start deploy
             #   run: |
