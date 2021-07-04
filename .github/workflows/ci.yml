@@ -22,29 +22,29 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: Deploy
-                uses: appleboy/ssh-action@master
-                with:
-                  host: "47.100.201.31"
-                  username: root
-                  password: ${{ secrets.SSH_PASSWORD }}
+            # - name: Deploy
+            #     uses: easingthemes/ssh-deploy@v2.1.5
+            #     env:
+            #       host: "47.100.201.31"
+            #       username: root
+            #       password: ${{ secrets.SSH_PASSWORD }}
 
-                  script: |
-                    ls /home/work
+            #       script: |
+            #         ls /home/work
 
             # 设置 sshkey
-            # - name: Set ssh key
-            #   run: |
-            #       mkdir -p ~/.ssh/
-            #       echo "${{secrets.PRIVATE_KEY}}" > ~/.ssh/id_rsa
-            #       chmod 600 ~/.ssh/id_rsa
-            # # known_hosts
-            # - name: Setup knownhosts
-            #   run: ssh-keyscan 47.100.201.31 >> ~/.ssh/known_hosts
+            - name: Set ssh key
+              run: |
+                  mkdir -p ~/.ssh/
+                  echo "${{secrets.PRIVATE_KEY}}" > ~/.ssh/id_rsa
+                  chmod 600 ~/.ssh/id_rsa
+            # known_hosts
+            - name: Setup knownhosts
+              run: ssh-keyscan 47.100.201.31 >> ~/.ssh/known_hosts
 
-            # - name: Start deploy
-            #   run: |
-            #       ssh root@47.100.201.31 "ls /home/work"
+            - name: Start deploy
+              run: |
+                  ssh root@47.100.201.31 "ls /home/work"
 
             # - name: start deploy
             #   run: |
