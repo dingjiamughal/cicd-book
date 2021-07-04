@@ -38,6 +38,7 @@ jobs:
                   mkdir -p ~/.ssh/
                   echo "${{secrets.PRIVATE_KEY}}" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
+
             # known_hosts
             - name: Setup knownhosts
               run: ssh-keyscan 47.100.201.31 >> ~/.ssh/known_hosts
