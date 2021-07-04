@@ -22,16 +22,6 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            # - name: Deploy
-            #     uses: easingthemes/ssh-deploy@v2.1.5
-            #     env:
-            #       host: "47.100.201.31"
-            #       username: root
-            #       password: ${{ secrets.SSH_PASSWORD }}
-
-            #       script: |
-            #         ls /home/work
-
             # 设置 sshkey
             - name: Set ssh key
               run: |

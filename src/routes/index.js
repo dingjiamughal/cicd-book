@@ -17,7 +17,7 @@ router.get('/api/test', async ctx => {
     ctx.body = {
         status: 0,
         content: {
-            hello: 'world',
+            hello: 'hello-world',
             sql: connect.length > 0,
             mongo: isMongoConned
         }
