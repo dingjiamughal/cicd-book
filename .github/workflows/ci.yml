@@ -1,0 +1,45 @@
+# github action 调研 demo
+name: ci
+
+on:
+    # schedule:
+    #   - cron: '0 0 * * *'
+    push:
+        branches:
+            - main
+        paths:
+            - '.github/workflows/**'
+            - '__test__/**'
+            - 'src/**'
+            - 'docker-compose.yml'
+            - 'Dockerfile'
+            - 'bin/*'
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            # 设置 sshkey
+            - name: set ssh key
+              run: |
+                  mkdir -p ~/.ssh/
+                  echo "${{secrets.DJ_ID_RSA}}" > ~/.ssh/id_rsa
+                  chomd 600 ~/.ssh/id_rsa
+                  ssh-keyscan "47.100.201.31" >> ~/.ssh/known_hosts
+
+            - name: start deploy
+              run: |
+                  ssh root@47.100.201.31 "
+                    cd /home/work/cicd-book;
+                    git remote add origin https://dingjiamughal:${{secrets.DJ_PASSWORD}}@github.com/dingjiamughal/cicd-book.git;
+                    git checkout main;
+                    git pull origin main;
+                    git remote remove origin;
+
+                    docker-compose build dj-server;
+                    docker-compose up -d;
+                  "
+
+            - name: remove sshkey
+              run: rm -rf ~/.ssh/id_rsa

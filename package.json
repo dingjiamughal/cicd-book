@@ -1,20 +1,31 @@
 {
-  "name": "cicd-book",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:dingjiamughal/cicd-book.git",
-  "author": "dingjia <465560882@qq.com>",
-  "license": "MIT",
-  "scripts": {
-    "dev": "parcel *.html",
-    "build": "parcel build *.html",
-    "test": "jest"
-  },
-  "devDependencies": {
-    "jest": "^27.0.4",
-    "parcel-bundler": "^1.12.5"
-  },
-  "dependencies": {
-    "jquery": "^3.6.0"
-  }
+    "name": "cicd-book",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com:dingjiamughal/cicd-book.git",
+    "author": "dingjia <465560882@qq.com>",
+    "license": "MIT",
+    "scripts": {
+        "server": "node server.js",
+        "pm2": "pm2 start bin/process.json",
+        "dev": "parcel *.html",
+        "build": "parcel build *.html",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "jest": "^27.0.4",
+        "koa": "^2.13.1",
+        "parcel-bundler": "^1.12.5",
+        "pm2": "^5.1.0"
+    },
+    "dependencies": {
+        "jquery": "^3.6.0",
+        "koa-bodyparser": "^4.3.0",
+        "koa-helmet": "^6.1.0",
+        "koa-router": "^10.0.0",
+        "mongoose": "^5.12.15",
+        "mysql2": "^2.2.5",
+        "redis": "^3.1.2",
+        "sequelize": "^6.6.4"
+    }
 }

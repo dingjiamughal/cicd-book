@@ -1,0 +1,15 @@
+{
+    "apps": [
+        {
+            "name": "dj-pm2-config-test",
+            "script": "bin/www",
+            "ignore_watch": ["node_modules", "__test__", "logs"],
+            "instances": 1,
+            "error_file": "./logs/err.log",
+            "out_file": "./logs/out.log",
+            "log_date_format": "YYYY-MM-DD HH:mm:ss Z",
+            "combine_logs": true,
+            "max_memory_restart": "300M"
+        }
+    ]
+}
