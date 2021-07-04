@@ -26,7 +26,7 @@ jobs:
                   mkdir -p ~/.ssh/
                   echo "${{secrets.DJ_ID_RSA}}" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
-                  ssh-keyscan "47.100.201.31" >> ~/.ssh/known_hosts
+                  ssh-keyscan "172.19.149.197" >> ~/.ssh/known_hosts
 
             - name: start deploy
               run: |
