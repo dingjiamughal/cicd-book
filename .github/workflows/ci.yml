@@ -27,7 +27,6 @@ jobs:
                   mkdir -p ~/.ssh/
                   echo "${{secrets.PRIVATE_KEY}}" > ~/.ssh/id_rsa
                   chmod 700 ~/.ssh
-                  chmod 600 ~/.ssh/authorized_keys
                   chmod 600 ~/.ssh/id_rsa
             # known_hosts
             - name: Setup knownhosts
