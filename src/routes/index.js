@@ -1,5 +1,6 @@
 const router = require('koa-router')();
 const sqlConnect = require('../db/sql');
+const { ReadmeModel } = require('../models/readme');
 const User = require('../models/user');
 const { WorkModel } = require('../models/work');
 
@@ -31,6 +32,14 @@ router.get('/api/insert', async ctx => {
     });
 
     const data = await WorkModel.find();
+    ctx.body = {
+        status: 0,
+        content: data
+    };
+});
+
+router.get('/api/dingjiamughal', async ctx => {
+    const data = await ReadmeModel.find();
     ctx.body = {
         status: 0,
         content: data
