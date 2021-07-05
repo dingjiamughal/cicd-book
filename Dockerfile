@@ -8,6 +8,6 @@ WORKDIR /app
 COPY . /app
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai'
-RUN npm install
+RUN npm install --registry=https://registry.npm.taobao.org
 
 CMD npm run pm2 && npx pm2 log

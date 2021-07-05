@@ -1,4 +1,4 @@
-const config = require('./local');
+const config = require('./base');
 
 config.mongodbConf.host = 'dj-mongo';
 config.redisConf.host = 'dj-redis';
