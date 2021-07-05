@@ -3,6 +3,7 @@
         {
             "name": "dj-pm2-config-test",
             "script": "bin/www",
+            "watch": true,
             "ignore_watch": ["node_modules", "__test__", "logs"],
             "instances": 1,
             "error_file": "./logs/err.log",

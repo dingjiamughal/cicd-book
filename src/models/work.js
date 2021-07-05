@@ -8,6 +8,6 @@ const WorkSchema = mongoose.Schema(
     { timeStamps: true }
 );
 
-const WorkModel = mongoose.model('work', WorkSchema);
+const WorkModel = mongoose.model('Work', WorkSchema);
 
 module.exports = { WorkModel };

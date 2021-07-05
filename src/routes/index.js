@@ -24,4 +24,17 @@ router.get('/api/test', async ctx => {
     };
 });
 
+router.get('/api/insert', async ctx => {
+    await WorkModel.create({
+        title: '你好啊',
+        components: { id: 'hape', name: '孙笑川' }
+    });
+
+    const data = await WorkModel.find();
+    ctx.body = {
+        status: 0,
+        content: data
+    };
+});
+
 module.exports = router;
