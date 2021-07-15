@@ -46,4 +46,6 @@ router.get('/api/dingjiamughal', async ctx => {
     };
 });
 
+console.log();
+
 module.exports = router;
